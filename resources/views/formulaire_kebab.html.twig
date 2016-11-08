@@ -1,0 +1,85 @@
+{% extends 'main.html.twig' %}
+
+{% block content %}
+
+<h1>{{nom_form}}</h1>
+
+        <form name="form_kebab" action="{{action}}" method="{{method}}" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Localisation</legend>
+
+                {% if form.token is defined %}
+                    <input type="hidden" name="token" value="{{form.token}}">
+                {% endif %}
+
+
+                <label for="departement">Département</label>
+                <select id="departement" name="departement">
+                    <option selected disabled>Choisir un département</option>
+
+
+                </select>
+
+                <label for="ville">Ville</label><input id="ville" name="ville" type="text" placeholder="endroit (champ obligatoire)" value="{{form.ville}}">
+                <label for="code_postal">Code postal</label><input id="code_postal" name="code_postal" placeholder="champ optionnel" type="text" value="{{form.code_postal}}">
+            </fieldset>
+
+            <fieldset>
+                <legend>Vos informations</legend>
+
+                <label for="pseudo">Pseudonyme</label><input type="text" id="pseudo" name="pseudo" value="{{user.pseudo}}">
+                <label for="mail">Adresse email</label><input type="email" id="mail" name="mail" value="{{user.email}}">
+
+
+                {% if form is not defined %}
+                <label for="mdp">Mot de passe (minimum : 6 caractères)</label><input id="mdp" type="password" name="mdp" >
+                <label for="confirm_mdp">Confirmer mot de passe</label><input id="confirm_mdp" type="password" name="confirm_mdp">
+
+                <i>Ces informations seront requises si vous souhaitez éditer votre kebab à l'avenir.</i>
+                {% endif %}
+            </fieldset>
+
+            <fieldset>
+                <legend>Kebab</legend>
+                
+                <label for='titre'>Titre du kebab</label><input type='text' name='titre' value="{{form.titre}}">
+                
+                <label for='categorie'>Catégorie</label>
+                <select id="categorie" name="categorie">
+                        <option disabled selected>Choisir une catégorie</option>
+
+                    {% for cat in categories %}
+                        <option 
+                        {% if form.categ_id == cat.id %}
+                            selected 
+                        {% endif %}
+                	    value="{{ cat.id }}">{{cat.nom}}</option>
+                	{% endfor %}
+                        
+                </select>
+                
+
+                
+                <label for='description'>Description</label>
+                
+                <textarea id="description" name='description' cols='50' rows='10'>{{form.description}}</textarea>
+
+                    {% if form is not defined %}
+                        <label>Image du Kebab</label><input type='file' name='photos[]'>
+
+                    {% endif %}
+                <div class="boutons">                    
+                    <input type='submit' name='valider' id="valider" class='bouton' value='Valider'>
+                    {{ csrf.field | raw }}
+                </div>
+                
+            </fieldset>
+
+        </form>
+
+        <script src="{{ base_url() }}/js/jquery.min.js"></script>
+        <script src="{{ base_url() }}/js/validate.min.js"></script>
+        <script src="{{ base_url() }}/js/validation_form_kebab.js"></script>
+    
+{% endblock %}
+

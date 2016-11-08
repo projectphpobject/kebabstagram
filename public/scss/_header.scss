@@ -1,0 +1,106 @@
+.header
+{
+	border-bottom: 1px blue solid;
+	border-color: $couleur-3;
+	width: 100%;
+	
+
+	h1
+	{
+		margin:0;
+		color:$couleur-1;
+		width: 100%;
+		float: left;
+
+		@media screen and(min-width: 700px) {
+			width: 20%;
+			
+		}
+
+
+	}
+
+	@include clearfix();
+	.userbar
+	{
+		text-align: center;
+		padding: 10px;
+		
+		color:darken($couleur-1, 20);
+		font-weight: bold;
+		font-style: italic;
+
+		a
+		{
+			text-decoration: none;
+			color:$couleur-1;
+
+			&:hover
+			{
+				color:$couleur-4;
+			}
+
+		}
+
+		input, label
+		{
+			width: 100%;
+			float:left;
+			margin-bottom: 10px;
+			box-sizing:border-box;
+			
+		}
+
+		
+		@media screen and (min-width: 900px) {
+		    label
+		    {
+		    	width: 18%;
+		    	text-align: right;
+
+
+		    }
+		    label::after
+		    {
+		    	content:" : ";
+		    }
+
+		    input
+		    {
+		    	width: 25%;
+		    }
+
+		    .bouton
+		    {
+		    	width: 10%;
+
+				margin-right: 0;
+		    }
+
+		    input, label
+		    {
+		    	margin-right: 1%;
+		    	margin-bottom: 0;
+		    	height: 25px;
+		    }
+
+		    float:right;
+		    width: 65%;
+		    text-align: right;
+		    
+
+		}
+
+
+
+		.bouton
+		{
+			border-color: $couleur-4;
+			background-color: $couleur-1;
+			color:white;
+			font-weight: bold;
+		}
+
+		@include clearfix();
+	}
+}

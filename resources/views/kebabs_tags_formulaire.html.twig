@@ -1,0 +1,30 @@
+{% extends "main.html.twig" %}
+
+{% block content %}
+    <h1>Ajout d'un Tag</h1>
+
+    <form action="{{ action }}" method="{{method}}">
+
+        <fieldset>
+            <legend>Votre Tag</legend>
+
+            <label for="tag">Saisir Tag </label><input type="text" id="tag" name="tag" placeholder="#tag #tag...">
+            <fieldset>
+                <legend>Vos informations</legend>
+
+                <label for="pseudo">Pseudonyme </label><input type="text" id="pseudo" name="pseudo" value="{{ user.pseudo }}">
+                <label for="mail">Adresse email </label><input type="email" id="mail" name="mail" value="{{ user.email }}">
+
+
+
+            </fieldset>
+
+            <div class="boutons">
+                <input type='hidden' name='id' value='{{ id }}'>
+                <input type='submit' name='valider' id="valider" class='bouton' value='Valider'>
+                {{ csrf.field | raw }}
+
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+<header class="header">
+    <h1>Kebabstagram</h1>
+	
+
+	<div class="userbar">
+	{% if user is not defined %}
+		
+    <form action="{{authentication_action}}"  method="post">
+    	
+    	<label for="email">Email</label>
+    	<input placeholder="votre-adresse@toto.com" type="email" name="email">
+    	<label for="mdp">Mot de passe</label>
+    	<input type="password" name="mdp" placeholder="Mot de passe">
+    	<input type="hidden" name="current_url" value="{{current_url}}">
+    	<input class='bouton' type="submit" value="OK">
+    </form>
+    {% else %}
+        <span>Bonjour <a href="{{profil}}">{{user.prenom}} {{user.nom}}</a></span>
+
+        <span><a href="{{disconnect}}">Déconnexion</a></span>
+	{% endif %}
+	</div>
+</header>

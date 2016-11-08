@@ -1,0 +1,87 @@
+@import "compass/css3/box-sizing";
+
+.search
+{
+
+    background-color: $couleur-4;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+
+
+
+
+    .input-search, input[type='submit']
+    {
+
+        float:left; 
+        width: 100%;
+        height: 60px;
+        margin-bottom: 15px;
+        @include box-sizing('border-box');
+
+    }
+
+
+
+    input[type='submit']
+    {
+        background-color: $couleur-2;
+        border-color: darken($couleur-2, 5);
+        color:white;
+    }
+
+    a
+    {
+        text-align: center;
+    }
+
+    @include clearfix();
+
+
+
+
+
+    @media screen and (min-width: 600px) and (max-width: 900px){
+
+
+        #searchbar
+        {
+            width: 100%;
+        }
+        .input-search
+        {
+            width:48%;
+        }
+
+        .input-search:nth-child(2n+2){
+            margin-right: 4%;
+        }
+
+        input[type='submit']{
+            width: 100%;
+        }
+
+    }
+    @media screen and (min-width: 900px){
+
+        .input-search[type='number']
+        {
+            width:20%;
+        }
+        .input-search, input[type='submit']
+        {
+            width: (1/6*100%) - 1%;
+            height: 35px;
+            margin-bottom: 0;
+
+        }
+
+        .input-search{
+            margin-right: 1%;
+        }
+
+    }
+
+}

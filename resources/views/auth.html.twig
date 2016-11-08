@@ -1,0 +1,22 @@
+{% extends "main.html.twig" %}
+
+{% block content %}
+    <script src="assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/supprimer_kebab.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <form action="{{action}}" method="{{method}}">
+
+        <fieldset>
+            <legend>{{message}}</legend>
+
+            <label for="mdp">Mot de passe </label><input type="password" id="mdp" name="mdp">
+            <input type="hidden" name="id_kebab" value=""/>
+            <input type="submit" class="bouton" id="valider" value="Valider">
+            <a href="" class="bouton"></a>
+        </fieldset>
+
+    </form>
+
+
+{% endblock %}

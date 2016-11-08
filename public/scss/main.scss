@@ -1,0 +1,27 @@
+@import "var";
+@import "boutons";
+@import "clearfix";
+@import "header";
+@import "navbar";
+@import "search";
+@import "list-element";
+@import "footer";
+@import "typo";
+@import "form";
+@import "detail";
+@import "profil";
+
+
+body
+{
+	background-color: rgb(245, 245, 245);
+	font-family: "Calibri", "Arial";
+        padding: 0 2%;
+
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+	
+}
+
+

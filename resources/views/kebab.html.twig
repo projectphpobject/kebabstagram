@@ -1,0 +1,74 @@
+{% extends 'main.html.twig' %}
+
+
+
+{% block content %}
+
+	<script src="{{ base_url() }}/js/visionner_photos.js" type="text/javascript" charset="utf-8"></script>
+
+	<div class="detail">
+
+		{% block rendu %}
+
+		{% endblock %}
+		<h1>{{ kebab.titre }}</h1>
+
+
+
+		<div class="container-float">
+			{% if photos is not null %}
+				<div class="carre-float">
+					<img class='grande' src=" {{ base_url() }}/{{ photos[0] }} " alt="photo de l'objet"/>
+				</div>
+				<div class='carre-float'>
+					{% for photo in photos %}
+						<img class="mini" src=" {{ base_url() }}/{{photo}} " alt="photo de l'objet" />
+					{% endfor %}
+
+				</div>
+
+
+			{% endif %}
+			<div class='carre-float liens'>
+				<a href='#'>Modifier le kebab</a><br />
+				<a href="#">Supprimer le kebab</a>
+			</div>
+		</div>
+
+
+		<p><b>Auteur du Kebab :</b>{{ user.nom }} {{ user.prenom }}</p>
+
+		<p><b>Lieu d'achat :</b> {{ kebab.endroit }} </p>
+		<p><b>Description :</b><br />
+			{{ kebab.description | nl2br}}
+		</p>
+		<p><b>Commentaires Associés :</b> </p>
+		{% for commentaire in commentaires  if commentaire.id_photo == kebab.id %}
+
+			<p><b>Auteur du Commentaire :</b>
+				{% for utilisateur in utilisateurs %}
+
+							{% if  commentaire.id_user == utilisateur.id %} {{ utilisateur.nom }} {{utilisateur.prenom}}
+							{% endif %}
+
+				 {% endfor %}
+				</p>
+			<br/>
+			<span class='element-lieu'>
+         {{loop.index }}- {{ commentaire.message }}
+		   </span>
+			<br /><br />
+
+		{% else %}
+			<p>Pas de commentaires associés à cette photo</p>
+
+		{% endfor %}
+
+
+		</p>
+
+
+		<a class='bouton' id="btnCoor" href="#" >Contacter le vendeur</a>
+
+	</div>
+{% endblock %}

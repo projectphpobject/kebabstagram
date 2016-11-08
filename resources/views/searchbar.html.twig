@@ -1,0 +1,36 @@
+<div class='search'>
+
+            <form action="{{ searchbar.action }}">
+
+
+                <input class='input-search' type='search' name="title" placeholder="Recherche" id="searchbar" value="{{preremp.nom}}"/>
+                <input class='input-search' type='search' name="tag" placeholder="Tapez votre tag" value="{{preremp.tag}}"/>
+
+
+                <select name="categorie" id="categorie" class='input-search'>
+                    <option value="tag" >Par Tag</option>
+                    <option  value="mot">Par mot-clé </option>
+                    <option  value="user">Par utilisateur </option>
+                </select>
+
+
+                <select name="departement" class='input-search'>
+                    <option value="0" selected>Tous les départements</option>
+                    {% for dep in searchbar.departements %}
+                        <option 
+                        {% if dep.id == preremp.depart_select %}
+                             selected
+                        {% endif %}
+                        value="{{ dep.id }}">{{dep.nom}} - {{dep.code}}</option>
+                        
+                    {% endfor %}
+                </select>
+
+
+
+                <input class='input-search' name="ville" type="text" placeholder="Lieu précis (Ville)" value="{{preremp.ville}}">
+                <input class='bouton' type="submit" id="chercher" value="Chercher">
+
+            </form>
+
+        </div>

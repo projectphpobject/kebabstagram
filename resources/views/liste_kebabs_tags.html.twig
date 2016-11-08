@@ -1,0 +1,17 @@
+{% extends 'main.html.twig' %}
+
+{% block content %}
+<div class="list-element">
+
+
+
+    {% for photo in photos %}
+
+        {% include "liste_kebabs_element.html.twig" %}
+
+    {% endfor %}
+
+
+    <script src="{{ base_url() }}/js/liste_kebab_cliquable.js" type="text/javascript" charset="utf-8"></script>
+</div>
+{% endblock %}

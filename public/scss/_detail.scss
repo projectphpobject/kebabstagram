@@ -1,0 +1,101 @@
+.detail
+{
+    .container-float
+    {
+
+        .carre-float
+        {
+            width: 100%;
+            float:left;
+            max-width:400px;
+            margin-right:2%;
+
+
+            img
+            {
+                box-sizing: border-box;
+            }
+
+            .grande
+            {
+                max-width:100%;            
+                height: auto;
+                border:1px solid $couleur-2;
+            }
+
+            .mini
+            {
+                border: 1px solid $couleur-4;
+                width:49%;
+                height: auto;
+                float:left;  
+                margin-bottom:2%;
+
+                &:nth-child(2n+1)
+                    {
+                    margin-right:2%;
+                }
+
+                &:hover
+                {
+                    border: 1px solid $couleur-2;
+                    cursor: pointer;
+                }
+            }
+
+            @include clearfix();
+
+
+
+
+            @media screen and (min-width:600px)
+                {
+                width:48%;
+            }
+
+        }
+        @include clearfix();
+
+
+        .liens
+        {
+            float:left;
+            
+            a
+            {
+                text-decoration: none;
+                color:$couleur-1;
+                font-weight: bold;
+
+                text-align:left;
+            }
+            a:hover
+                {
+                color:$couleur-2;
+            }
+        }
+    }
+
+    p
+    {
+        font-size:1.1em;
+    }
+
+    @include bouton($couleur-1);
+
+    .bouton
+    {
+        width:100%;
+
+        display:inline-block;
+
+        @media screen and (min-width:600px)
+            {
+            width:200px;
+        }
+    }
+
+
+
+
+}

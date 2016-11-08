@@ -1,0 +1,8 @@
+<br><br><br><br>
+<ul class='navbar2'>
+{% for lien in menu %}
+	
+	<li> <a href=" {{ lien.href }}" title=" {{ lien.name }}"> {{ lien.name }}</a></li>
+
+{% endfor %}
+</ul>

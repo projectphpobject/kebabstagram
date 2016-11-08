@@ -1,0 +1,78 @@
+{% extends 'main.html.twig' %}
+
+{% block content %}
+
+<h1>Inscription</h1>
+
+<form name="form_inscription" action="{{action}}" method="{{method}}" accept-charset="utf-8">
+
+{% if message is not null %}
+<div class="error">
+	<span>{{message}}</span>
+</div>
+{% endif %}
+
+<fieldset>
+	<legend>Informations de connection</legend>
+
+
+	<label for="email">Adresse e-mail</label>
+	<input type="mail" name="email" value="{{preremp.email}}" placeholder="Votre adresse e-mail">
+
+	<label for="mdp">Mot de passe (minimum : 6 caractères)</label>
+	<input type="password" name="mdp" value="" placeholder="Mot de passe">
+
+	<label for="confirm_mdp">Confirmez votre mot de passe</label>
+	<input type="password" name="confirm_mdp" value="" placeholder="Confirmation de mot de passe">
+
+	
+
+</fieldset>
+
+<fieldset>
+	<legend>Vos coordonnées</legend>
+
+	<label for="pseudo">Pseudonyme</label>	
+	<input type="text" name="pseudo" value="{{preremp.pseudo}}" placeholder="Login">
+
+	<label for="prenom">Votre prénom</label>
+	<input type="text" name="prenom" value="{{preremp.prenom}}" placeholder="Votre prénom">	
+
+	<label for="nom">Votre nom</label>
+	<input type="text" name="nom" value="{{preremp.nom}}" placeholder="Votre nom">
+	
+
+	
+
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Utilisateur:</legend>
+
+		<label >Profil</label>
+		<select value="" name="categ">
+			<option selected disabled>Profil</option>
+        	
+                <option      
+                    selected 
+                
+        	    value="admin">Administrateur</option>
+                <option      
+                    selected 
+                
+        	    value="membre">Membre</option>
+        	
+		</select>
+		<div class="boutons">
+			<input class='bouton' type="submit" name="submit" value="Valider">
+		</div>
+	</fieldset>
+
+</form>
+
+<script src="../public/js/jquery.min.js"></script>
+<script src="../public/js/validate.min.js"></script>
+<script src="../public/js/validation_form_inscription.js"></script>
+
+{% endblock %}

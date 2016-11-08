@@ -1,0 +1,22 @@
+@mixin bouton($couleur)
+{
+    .bouton
+    {
+        background-color:$couleur;
+        border: 2px solid darken($couleur, 5);
+        text-decoration: none;
+        color:white;
+        padding: 12px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .bouton:active
+        {
+            border-color: $couleur-4;
+    }
+
+
+
+}
+

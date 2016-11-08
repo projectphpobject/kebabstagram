@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="{{ base_url() }}/jquery/jRating.jquery.css" />
+	<link rel="stylesheet" href="{{ base_url() }}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ base_url() }}/css/main.css">
+	<script type="text/javascript" src="{{ base_url() }}/jquery/jquery.js"></script>
+	<script type="text/javascript" src="{{ base_url() }}/jquery/jRating.jquery.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	<meta charset="utf-8"/>
+
+
+</head>
+<body>
+
+{% block header %}
+	{% include 'templates/partials/navigation.twig' %}
+
+{% endblock %}
+
+	{% block menu %}
+		{% include "menu.html.twig" %}
+	{% endblock %}
+
+	{% block search %}
+		{% include "searchbar.html.twig" %}
+	{% endblock %}
+
+	{% block content %}
+
+	{% endblock %}
+
+	{% block footer %}
+
+	{% endblock %}
+
+
+
+<script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+</body>
+</html>

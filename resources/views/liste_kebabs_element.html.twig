@@ -1,0 +1,50 @@
+
+<div class="element">
+    <div class="wrapper">
+    <div class='element-apercu'><a href="{{ links[photo.id] }}"><img src="{{ links_photos[photo.id] }}" alt="photo de l'objet"/></a></div>
+    <span class='element-titre'><a href="{{ links[photo.id] }}">
+                	{{ photo.titre }}
+                </a></span>
+
+    <span class='element-date'>Le {{ photo.created_at | date("d/m/Y") }} à {{ photo.created_at | date("H:i") }}</span>
+
+    <span class='element-lieu'>{{ photo.endroit }} par  {% for user in users %} {% if photo.id_user == user.id %}  {{ user.nom }}  {% endif %}</span>
+
+    {% endfor %}
+    <br/>
+
+    <span class="element-desc">Description  :{{ photo.description  | striptags | slice(0, 50) }} [...]  {% for tag in urltag %}
+            {% if  tag.id_photo == photo.id %}
+
+            <a href="{{ base_url() }}/SearchTag/:{{ tag.label }}">#{{ tag.label }}</a> {% endif %} {% endfor %}
+        </span>
+    </div>
+
+    {%  set class ='' %}
+          {% for rate in ratings  if photo.id == rate.id_photo  %}
+              {% for note in ratings %}
+              {% if    current_user in userratings[loop.index-1] and  photo.id == note.id_photo %}  {% set class = 'jDisabled' %} {% endif %}
+                  {% endfor %}
+    <div class="rating {{ class }}" id="{{ rate.rating }}_{{ rate.id_photo }}" >{{ csrf.field | raw }}</div>
+
+          {% else %}
+    <div class="rating {{ class }}" id="0_5" >{{ csrf.field | raw }}</div>
+          {% endfor %}
+
+    <div class="wrapper">
+    {% if user.id == photo.id_user %}
+        <span class='element-lieu'>Par: <a href="">{{utilisateur.prenom}} {{utilisateur.nom}}</a></span>
+    {% endif %}
+    <span class='element-lieu'> <a href="{{links[photo.id]}}">({{count[photo.id]}})Commentaires  </a></span>
+        <br/>
+
+
+    <div class="options" >
+        <a aria-pressed="false"  href="{{links_com[photo.id]}}" role="button" tabindex="-1">Commenter</a>&nbsp;&nbsp;&nbsp;
+        <a aria-pressed="false" href="{{links_tags[photo.id]}}" role="button" tabindex="-1">Ajouter Tag</a>&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
+
+    </div>
+</div>
+</div>
+
