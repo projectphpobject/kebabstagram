@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mar 08 Novembre 2016 à 22:03
--- Version du serveur :  5.7.16-0ubuntu0.16.04.1
--- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+-- Host: localhost
+-- Generation Time: Nov 13, 2016 at 08:00 PM
+-- Server version: 5.7.16-0ubuntu0.16.04.1
+-- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `kebabstagram_bdd`
+-- Database: `kebabstagram_bdd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaires`
+-- Table structure for table `commentaires`
 --
 
 CREATE TABLE `commentaires` (
@@ -34,20 +34,10 @@ CREATE TABLE `commentaires` (
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `commentaires`
---
-
-INSERT INTO `commentaires` (`id`, `message`, `date`, `id_photo`, `id_user`) VALUES
-(1, '#berbere et des commentaires', '2016-11-07 10:39:21', 109, 2),
-(2, 'je voudrais connaitre les #ingrédients associés à cette #recette', '2016-11-07 11:54:42', 112, 2),
-(3, 'ceci est un commentaire avec des tags #amazigh et d\'autres tags comme #berbere', '2016-11-07 19:58:37', 115, 2),
-(4, 'La recette est un peu longue je donnerai les #ingrédients plus tard!\r\nJe me contenterai de vous dire de #gouter à ce #kebab', '2016-11-08 20:41:58', 117, 3);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `departement`
+-- Table structure for table `departement`
 --
 
 CREATE TABLE `departement` (
@@ -57,7 +47,7 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `departement`
+-- Dumping data for table `departement`
 --
 
 INSERT INTO `departement` (`id`, `code`, `nom`) VALUES
@@ -166,7 +156,7 @@ INSERT INTO `departement` (`id`, `code`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notation`
+-- Table structure for table `notation`
 --
 
 CREATE TABLE `notation` (
@@ -178,25 +168,10 @@ CREATE TABLE `notation` (
   `id_users` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `notation`
---
-
-INSERT INTO `notation` (`id`, `id_photo`, `rating`, `total_rating`, `total_rates`, `id_users`) VALUES
-(16, 109, 2.975, 11.9, 4, '0,6,5,2,3'),
-(17, 110, 3, 12, 4, '0,6,5,2,3'),
-(18, 111, 3.8, 19, 5, '0,2,5,6,7,3'),
-(19, 112, 2.33333, 7, 3, '0,6,2,3'),
-(20, 113, 3, 9, 3, '0,6,2,3'),
-(22, 115, 2.5, 5, 2, '0,2,3'),
-(23, 116, 2, 2, 1, '0,3'),
-(24, 117, 4, 4, 1, '0,3'),
-(25, 118, 2, 2, 1, '0,3');
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `photos`
+-- Table structure for table `photos`
 --
 
 CREATE TABLE `photos` (
@@ -210,25 +185,10 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `photos`
---
-
-INSERT INTO `photos` (`id`, `titre`, `description`, `endroit`, `extension`, `id_user`, `created_at`, `updated_at`) VALUES
-(109, 'Kebab d\'Azouza', 'Ceci est un kebab fait maison!', 'LARBA NATH IRATHEN', 'jpg', 6, '2016-11-07 00:25:15', '2016-11-07 00:25:15'),
-(110, 'Kebab spécial Seddouk', 'Une spécialité régionale', 'Béjaia', 'jpg', 5, '2016-11-07 00:26:53', '2016-11-07 00:26:53'),
-(111, 'Kebab amazigh', 'Ceci est une spécialité de chez nous les kabyles', 'EL KLAA', 'jpg', 2, '2016-11-07 07:44:11', '2016-11-07 07:44:11'),
-(112, 'KEBAB DE MEKLA', 'Kebab pas cher!', 'MEKLA', 'jpg', 2, '2016-11-07 11:18:15', '2016-11-07 11:18:15'),
-(113, 'KEBAB TEST', 'FSFDGDSFGF', 'LAXOU', 'jpg', 6, '2016-11-07 13:07:39', '2016-11-07 13:07:39'),
-(115, 'Kebab natal', 'COUCOU', 'MEKLA', 'jpg', 2, '2016-11-07 18:13:35', '2016-11-07 18:13:35'),
-(116, 'Kebab de ma ELIAS NACERA', 'C\'est un kebab d\'azouza et amazigh', 'AZOUZA', 'jpg', 3, '2016-11-08 13:12:49', '2016-11-08 13:12:49'),
-(117, 'Kebab algérien', 'La recette de ce kebab est spéciale!', 'AZOUZA', 'jpg', 3, '2016-11-08 20:38:48', '2016-11-08 20:38:48'),
-(118, 'Kebab kabyle', 'Ceci est un kebab amazigh également ', 'TIZI OUZOU', 'jpg', 3, '2016-11-08 20:55:07', '2016-11-08 20:55:07');
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tags`
+-- Table structure for table `tags`
 --
 
 CREATE TABLE `tags` (
@@ -237,32 +197,10 @@ CREATE TABLE `tags` (
   `id_photo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `tags`
---
-
-INSERT INTO `tags` (`id`, `label`, `id_photo`) VALUES
-(1, 'amazigh', 111),
-(2, 'berbere', 111),
-(3, 'berbere', 109),
-(4, 'ingrédients', 112),
-(5, 'recette', 112),
-(6, 'amazigh', 115),
-(7, 'berbere', 115),
-(8, 'LAXOU', 110),
-(9, 'amazigh', 116),
-(10, 'berbere', 116),
-(11, 'ELKLAA', 116),
-(12, 'AZOUZA', 117),
-(13, 'LNI', 117),
-(14, 'ingrédients', 117),
-(15, 'gouter', 117),
-(16, 'kebab', 117);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -277,22 +215,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `pseudo`, `nom`, `prenom`, `email`, `password`, `profil`, `radie`) VALUES
-(2, 'Kamel79', 'REMAKI', 'Kamel', 'remakikamel@hotmail.fr', '$2y$10$lZq65fYOQlar7Lgv995K8etZGFM4diuoU1LyDl7RrCwFtjQT2D0ka', NULL, NULL),
-(3, 'Nacera86', 'ELIAS ', 'Nacera', 'eliasnacera@hotmail.fr', '$2y$10$VE.YprCmnMWvKL0KSxvbSuQtNh.jF5CUvlSO9xrlhBY1qPzLADQT2', NULL, NULL),
-(5, 'SOUSOU', 'GUEMINI', 'SOUAD', 'remakisouad@hotmail.fr', '$2y$10$Y5K0zeUi6hLNNGbzryoDDuXcdYxQhv9wqCU/2mTXPOtmAKJwjMbni', NULL, NULL),
-(6, 'Sonia92', 'ELIAS', 'SONIA', 'eliassonia@hotmail.fr', '$2y$10$y74aOyIjuj4VaXvk97g3uehTah5G6G0PN.30CsWXAvrZQU6pEwxqa', NULL, NULL),
-(7, 'Hakim93', 'REMAKI', 'Hakim', 'remakihakim@hotmail.fr', '$2y$10$caZkP1oolxNobpIJtu.da.c7BtXehisV.b9SqfyYctT2MujfN0h.K', NULL, NULL);
-
---
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `commentaires`
+-- Indexes for table `commentaires`
 --
 ALTER TABLE `commentaires`
   ADD PRIMARY KEY (`id`),
@@ -300,98 +227,98 @@ ALTER TABLE `commentaires`
   ADD KEY `id_utilisateur` (`id_user`);
 
 --
--- Index pour la table `departement`
+-- Indexes for table `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `notation`
+-- Indexes for table `notation`
 --
 ALTER TABLE `notation`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_photo` (`id_photo`);
 
 --
--- Index pour la table `photos`
+-- Indexes for table `photos`
 --
 ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Index pour la table `tags`
+-- Indexes for table `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_tag_phot` (`id_photo`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `pseudo` (`pseudo`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `commentaires`
+-- AUTO_INCREMENT for table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT pour la table `departement`
+-- AUTO_INCREMENT for table `departement`
 --
 ALTER TABLE `departement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
--- AUTO_INCREMENT pour la table `notation`
+-- AUTO_INCREMENT for table `notation`
 --
 ALTER TABLE `notation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
--- AUTO_INCREMENT pour la table `photos`
+-- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 --
--- AUTO_INCREMENT pour la table `tags`
+-- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `commentaires`
+-- Constraints for table `commentaires`
 --
 ALTER TABLE `commentaires`
   ADD CONSTRAINT `fk_comm_phot` FOREIGN KEY (`id_photo`) REFERENCES `photos` (`id`),
   ADD CONSTRAINT `fk_comm_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `notation`
+-- Constraints for table `notation`
 --
 ALTER TABLE `notation`
   ADD CONSTRAINT `fk_not_phot` FOREIGN KEY (`id_photo`) REFERENCES `photos` (`id`);
 
 --
--- Contraintes pour la table `photos`
+-- Constraints for table `photos`
 --
 ALTER TABLE `photos`
   ADD CONSTRAINT `fk_phot_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `tags`
+-- Constraints for table `tags`
 --
 ALTER TABLE `tags`
   ADD CONSTRAINT `fk_tag_phot` FOREIGN KEY (`id_photo`) REFERENCES `photos` (`id`);

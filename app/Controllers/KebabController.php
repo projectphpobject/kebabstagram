@@ -577,6 +577,8 @@ public function rechercherTags($request, $response,$tag,$search=null)
 
         if(isset($_SESSION['photo']))
         {
+
+
             $p->titre = strip_tags($_SESSION['photo']['titre']);
             $p->description = strip_tags($_SESSION['photo']['description']);
             $p->endroit = strip_tags($_SESSION['photo']['endroit']);
@@ -585,63 +587,92 @@ public function rechercherTags($request, $response,$tag,$search=null)
             $p->password = hash($hash, $_SESSION['photo']['mdp']);
 
             $p->save();
+
+
+            foreach ($_SESSION['photos'] as $key => $value)
+            {
+
+                //$this->sauvegarde_photos($value, $config['upload_dir']."/",$p->id );
+            }
+
+
+
         }
+        //Sinon dans le post
         else
         {
-                $this->verifier_formulaire_photos($posts);
-                $p->titre = strip_tags($posts['titre']);
-                $p->description = strip_tags($posts['description']);
-                $p->endroit = strip_tags($posts['ville']);
-                $p->id_user = $_SESSION['user'];
+
+            $this->verifier_formulaire_photos($posts);
+            $p->titre = strip_tags($posts['titre']);
+            $p->description = strip_tags($posts['description']);
+            $p->endroit = strip_tags($posts['ville']);
+            $p->id_user = $_SESSION['user'];
+            //$u->pseudo = strip_tags($posts['pseudo']);
+            //$u->email = strip_tags($posts['mail']);
+
+            //$p->password = hash($hash, $posts['mdp']);
+
+
+
             foreach ($_FILES['photos']['name'] as $key => $name)
             {
-                    if(!empty($name))
+                if(!empty($name))
+                {
+                    $explode = explode(".",$name);
+                    $extension = end($explode);
+                    //private function sauvegarde_photos(, , $photo_id, $extension = null)
+                    $chemin = $_FILES['photos']['tmp_name'][$key];
+                    $destination = $config['upload_dir']."/";
+
+
+                    //$p = new Photo();
+                    if($extension == null)
                     {
-                        $explode = explode(".",$name);
-                        $extension = end($explode);
-
-                        $chemin = $_FILES['photos']['tmp_name'][$key];
-                        $destination = $config['upload_dir']."/";
-
-                        if($extension == null)
-                        {
-                            $explode = explode(".", $chemin);
-                            $p->extension = end($explode);
-                        }
-                        else
-                            $p->extension = $extension;
-
-                        $p->save();
-                        $destination .= $p->id;
-
-                        if(!file_exists($destination)) {
-                            mkdir($destination, 0777, true);
-
-                        }
-                        $destination .= "/$p->id.$p->extension";
-
-
-                        if(is_uploaded_file($chemin))
-                            move_uploaded_file($chemin, $destination);
-                        else
-                            rename($chemin, $destination);
+                        $explode = explode(".", $chemin);
+                        $p->extension = end($explode);
                     }
+                    else
+                        $p->extension = $extension;
+                    //$p->id = $photo_id;
+                    $p->save();
+                    $destination .= $p->id;
+
+                    if(!file_exists($destination)) {
+                        mkdir($destination, 0777, true);
+                        //chmod($destination, 0777);
+                    }
+                    $destination .= "/$p->id.$p->extension";
 
 
+                    if(is_uploaded_file($chemin))
+                        move_uploaded_file($chemin, $destination);
+                    else
+                        rename($chemin, $destination);
                 }
+
+
+            }
         }
+
+
 
         if(isset($_SESSION['photo']))
             unset($_SESSION['photo']);
 
         $p->save();
+
         $n= new Notation();
         $n->id_photo =$p->id;
         $n->id_users = 0;
         $n->rating = 0;
         $n->total_rating = 0;
         $n->total_rates = 0;
+
+
         $n->save();
+
+
+
     }
 
 
